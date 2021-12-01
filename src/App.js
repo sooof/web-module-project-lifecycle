@@ -13,11 +13,12 @@ class App extends React.Component {
       User: {},
       Followers:[
       ],
+      githubUser:"sooof",
       isLoading: false
     }
   }
   componentDidMount() {
-    axios.get('https://api.github.com/users/sooof')
+    axios.get(`https://api.github.com/users/${this.state.githubUser}`)
       .then(resp=> {
         // console.log(resp)
           this.setState({
@@ -29,8 +30,9 @@ class App extends React.Component {
           console.log(err);
       })
   }
-  handClick = () => {
-      axios.get(`https://api.github.com/users/sooof/followers`)
+  handClickFollowers = (e) => {
+      e.preventDefault();
+      axios.get(`https://api.github.com/users/${this.state.githubUser}/followers`)
       .then(resp=> {
           console.log(resp);
           this.setState({
@@ -46,6 +48,27 @@ class App extends React.Component {
         isLoading: true,
     }); 
   }
+  
+  handClickSearch = (e) => {
+    e.preventDefault();
+    axios.get(`https://api.github.com/users/${this.state.githubUser}`)
+    .then(resp=> {
+      // console.log(resp)
+        this.setState({
+            ...this.state,
+            User: resp.data,
+        });
+    })
+    .catch(err=> {
+        console.log(err);
+    })
+  }
+  handleChange = (e) => {
+      this.setState({
+        ...this.state,
+        githubUser: e.target.value
+    })
+  }
   render() {
     
     console.log("App.js user = ", this.state) 
@@ -56,12 +79,13 @@ class App extends React.Component {
                 <Link className="link" to='/'>GITHUN INFO</Link>
             </div>
             <div className="right-links">
-                <Link onClick={this.handClick} className="link" to='/'>FOLLOWERS</Link>
+                <Link onClick={this.handClickFollowers} className="link" to='/'>FOLLOWERS</Link>
                 <form className="link" >
                     <input 
+                    onChange={this.handleChange}
                     placeholder="Github Handle"
                     />
-                    <button >Search</button>
+                    <button onClick={this.handClickSearch} >Search</button>
                 </form>
             </div>
         </nav>
