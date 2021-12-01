@@ -35,12 +35,27 @@
     text-decoration: none;
     padding: 2.5% 1.5%;
     /* color: #E5DCC3; */
-    font-size: xx-large;
+    font-size: large;
 }
 
 .link:hover {
     text-decoration: underline;
     color: white;
+}
+button{
+    background-color: #706c86;
+    border: 1px solid #706c86;
+    color: white;
+    margin: 0 8px;
+    width: 80px;
+    padding: 6px 14px;
+}
+input{
+    border: 0;
+    font-size: 1rem;
+    width: 100px;
+    height: 25px;
+    border: 1px solid #535151;
 }
 .App{
   /* margin-top: 10%;   */
