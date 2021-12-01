@@ -11,7 +11,7 @@
     letter-spacing: 0.25em;
     line-height: 3.25em;
     margin: 0;
-    position: fixed;
+    /* position: fixed; */
     text-transform: uppercase;
     top: 0;
     width: 100%;
@@ -34,7 +34,8 @@
 .link {
     text-decoration: none;
     padding: 2.5% 1.5%;
-    color: #E5DCC3;
+    /* color: #E5DCC3; */
+    font-size: xx-large;
 }
 
 .link:hover {
@@ -42,5 +43,5 @@
     color: white;
 }
 .App{
-  margin-top: 80px;  
+  /* margin-top: 10%;   */
 }
